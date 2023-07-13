@@ -19,15 +19,15 @@ public class RestApiController {
 
 	@GetMapping(value = "/gettoken")
 	public static String getToken() throws Exception {
-		String url = "https://login.microsoftonline.com/a9986958-9133-412b-83e1-294da2f7fa73/oauth2/token";
+		String url = "https://login.microsoftonline.com/<Your_Tenant_ID>/token";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
 		MultiValueMap<String, String> inputMap = new LinkedMultiValueMap<>();
 
 		inputMap.add("grant_type", "client_credentials");
-		inputMap.add("client_id", "xxxxxxxxxxxxxxxxxxxxxxxxx");
-		inputMap.add("client_secret", "xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		inputMap.add("client_id", "<Your_Client_ID>");
+		inputMap.add("client_secret", "<Your_Client_Secret>");
 		inputMap.add("resource", "https://management.core.windows.net/");
 		HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<MultiValueMap<String, String>>(inputMap,
 				headers);
